@@ -1,19 +1,13 @@
-import SVGIconBase from "./SVGIconBase";
+import SVGIconBase from "../SVGIconBase";
 
-const MailIcon = (props) => {
+const AddIcon = (props) => {
   return (
     <SVGIconBase {...props}>
-      <rect
-        x="48"
-        y="96"
-        width="416"
-        height="320"
-        rx="40"
-        ry="40"
+      <path
+        d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z"
         fill="none"
         stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        strokeMiterlimit="10"
         strokeWidth="32"
       />
       <path
@@ -22,10 +16,10 @@ const MailIcon = (props) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="32"
-        d="M112 160l144 112 144-112"
+        d="M256 176v160M336 256H176"
       />
     </SVGIconBase>
   );
 };
 
-export default MailIcon;
+export default AddIcon;

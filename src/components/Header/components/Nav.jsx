@@ -18,9 +18,9 @@ const Nav = ({ containerClassName, navItemClassName, navListClassName }) => {
           </li>
         ))}
 
-        <li className="py-[15px] text-center rounded-md cursor-pointer transition-base hover:text-primary px-7 max-md:w-full btn max-md:mt-4 md:ml-4">
-          <Link href="" className="font-medium text-white">
-            Get Started
+        <li className="text-center rounded-md cursor-pointer transition-base hover:text-primary max-md:w-full max-md:mt-4 md:ml-4">
+          <Link href="/admin" className="py-[15px] font-medium text-white btn px-7">
+            Thử Ngay
           </Link>
         </li>
       </ul>

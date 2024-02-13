@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { CloseIcon } from "@/assets/icons";
+import { Button } from "@/components";
 
 const Modal = ({
   children,
@@ -19,7 +19,7 @@ const Modal = ({
       <div className="modal" onClick={onClick} role="dialog">
         <div
           className={twMerge(
-            "max-w-[900px] bg-[var(--primary-bg)] text-white modal-box rounded-md",
+            "max-w-[900px] bg-white text-black modal-box rounded-md",
             modalBoxClassName
           )}
         >
@@ -38,11 +38,11 @@ const Modal = ({
             <label
               htmlFor={type}
               className={twMerge(
-                "hover:opacity-80 transition-base absolute top-5 right-5 cursor-pointer text-[var(--text-color)]",
+                "hover:opacity-80 transition-base cursor-pointer text-black mt-5",
                 btnCancelClassName
               )}
             >
-              <CloseIcon className="w-10 h-10" />
+              <Button component="div" title="Đóng" containerClassName="btn text-white rounded-md" />
             </label>
           </div>
         </div>

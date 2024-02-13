@@ -6,6 +6,7 @@ import { SEQUENCE } from "@/containers/Home";
 
 // image
 import lnk from "@/assets/images/header-lnk.webp";
+import Link from "next/link";
 
 const Heading = () => {
   return (
@@ -39,8 +40,10 @@ const Heading = () => {
         />
 
         <Button
-          title="Get started"
+          title="Thử Ngay"
           containerClassName="btn py-5 px-10 max-sm:px-3 max-sm:py-2.5 max-sm:text-[10px] text-white rounded-[999px] max-sm:ml-2 ml-20"
+          component={Link}
+          href="/admin"
         />
       </div>
     </Fragment>

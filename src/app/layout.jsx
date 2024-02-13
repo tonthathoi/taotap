@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
             <Header />
             <div className="flex-1">{children}</div>
 
-            <Footer />
+            {/* <Footer /> */}
 
             <Notification />
             <ToastContainer />

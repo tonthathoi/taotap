@@ -1,8 +1,10 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { HeaderOnMobile, Nav } from "@/components/Header";
+import Link from "next/link";
 import { Fragment } from "react";
+import { usePathname } from "next/navigation";
+
+import { HeaderOnMobile, Nav } from "@/components/Header";
 
 const Header = () => {
   const pathname = usePathname();
@@ -11,7 +13,7 @@ const Header = () => {
     <header className="py-1.5 relative z-[99]">
       <div className="wide-preview max-w-[1200px]">
         <div className="py-[18px] text-black max-md:py-[23px] flex-between">
-          <div>LOGO</div>
+          <Link href="/">LOGO</Link>
 
           {pathname.includes("login") || pathname.includes("signup") || pathname.includes("reset_password") ? (
             <></>

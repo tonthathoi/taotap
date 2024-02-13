@@ -1,7 +1,7 @@
 export const NAV = [
   {
     title: "Giao diện",
-    path: "/"
+    path: "/admin/theme"
   },
   {
     title: "Trợ giúp",

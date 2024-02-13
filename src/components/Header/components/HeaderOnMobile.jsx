@@ -13,12 +13,13 @@ import { Nav } from "@/components/Header";
 const HeaderOnMobile = () => {
   const { on, toggleOff, toggleOn } = useToggle();
 
+  const pathname = usePathname();
+
   useEffect(() => {
-    if(on)
-    {
+    if(on){
       toggleOff()
     }
-  }, [usePathname])
+  }, [pathname])
 
   return (
     <Fragment>

@@ -1,6 +1,6 @@
-import SVGIconBase from "./SVGIconBase";
+import SVGIconBase from "../SVGIconBase";
 
-const ChevronUpIcon = (props) => {
+const CloseIcon = (props) => {
   return (
     <SVGIconBase {...props}>
       <path
@@ -8,11 +8,11 @@ const ChevronUpIcon = (props) => {
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="48"
-        d="M112 328l144-144 144 144"
+        strokeWidth="32"
+        d="M368 368L144 144M368 144L144 368"
       />
     </SVGIconBase>
   );
 };
 
-export default ChevronUpIcon;
+export default CloseIcon;

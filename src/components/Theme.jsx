@@ -3,7 +3,7 @@
 import { useMeasure } from "react-use";
 
 import { ImageWithFallback } from "@/components";
-import CheckMarkIcon from "@/assets/icons/CheckMarkIcon";
+import CheckMarkIcon from "@/assets/icons/ionicIcons/CheckMarkIcon";
 
 const Theme = ({ src, title, onPreview }) => {
   const [ref, { width, height }] = useMeasure();

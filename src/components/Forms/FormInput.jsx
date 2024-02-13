@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { useController } from "react-hook-form";
 
-import AlertIcon from "@/assets/icons/AlertIcon";
+import AlertIcon from "@/assets/icons/ionicIcons/AlertIcon";
 
 const Form = (props) => {
   const {

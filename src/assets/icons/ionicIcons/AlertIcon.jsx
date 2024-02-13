@@ -1,4 +1,4 @@
-import SVGIconBase from "./SVGIconBase";
+import SVGIconBase from "../SVGIconBase";
 
 const AlertIcon = (props) => {
   return (
