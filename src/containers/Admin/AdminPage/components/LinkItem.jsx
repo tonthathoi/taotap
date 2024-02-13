@@ -15,7 +15,7 @@ const LinkItem = ({ data }) => {
     isDragging,
   } = useSortable({
     id: data.id,
-    data
+    data,
   });
 
   const dndKitRowStyles = {
@@ -27,15 +27,13 @@ const LinkItem = ({ data }) => {
 
   return (
     <section style={dndKitRowStyles} ref={setNodeRef}>
-      <div className="mb-5 overflow-hidden shadow-xl select-none rounded-3xl">
-        <div className="flex gap-10 py-6 pr-6 overflow-hidden bg-white">
-          <div
-            className="h-auto pl-6 cursor-pointer flex-center"
-            {...attributes}
-            {...listeners}
-          >
-            <AppOutlineIcon />
-          </div>
+      <div
+        className="mb-5 overflow-hidden shadow-xl select-none rounded-3xl"
+        {...attributes}
+        {...listeners}
+      >
+        <div className="flex items-center gap-10 p-6 overflow-hidden bg-white">
+          <AppOutlineIcon />
 
           <div className="w-full">
             <div className="flex items-center gap-2 mb-1 cursor-pointer hover:text-primary transition-base w-fit">
