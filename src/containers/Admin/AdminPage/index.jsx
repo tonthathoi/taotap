@@ -3,16 +3,17 @@
 import { Fragment, useEffect, useState } from "react";
 import {
   DndContext,
-  closestCenter,
   useSensor,
   useSensors,
   MouseSensor,
   TouchSensor,
+  DragOverlay,
+  defaultDropAnimationSideEffects,
 } from "@dnd-kit/core";
 import {
   arrayMove,
-  rectSwappingStrategy,
   SortableContext,
+  verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
 import { Button } from "@/components";
@@ -23,31 +24,49 @@ import { SOCIAL_MEDIA_LINK } from "./mock";
 
 const Admin = () => {
   const [items, setItems] = useState(SOCIAL_MEDIA_LINK);
-  console.log("🚀 ~ Admin ~ items:", items)
+  const [activeId, setActiveId] = useState(null);
+  const [activeDragItemData, setActiveDragItemData] = useState(null);
+  // console.log("🚀 ~ Admin ~ activeDragItemData:", activeDragItemData);
 
   useEffect(() => {
-
     // dùng post method để lưu items mới sau khi sort ở đây
     setItems(items);
   }, [items]);
 
-  const mouseSensor = useSensor(MouseSensor, { activationConstraint: { distance: 10 } });
-  const touchSensor = useSensor(TouchSensor, { activationConstraint: { delay: 250, tolerance: 5 } });
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: { distance: 10 },
+  });
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: { delay: 250, tolerance: 5 },
+  });
 
   const sensors = useSensors(mouseSensor, touchSensor);
+
   function handleDragEnd(event) {
     const { active, over } = event;
 
-    if(!over) return;
+    if (!over) return;
 
     if (active.id !== over.id) {
       setItems((items) => {
-        const oldIndex = items.findIndex(r => r.id === active.id);
-        const newIndex = items.findIndex(r => r.id === over.id);
+        const oldIndex = items.findIndex((r) => r.id === active.id);
+        const newIndex = items.findIndex((r) => r.id === over.id);
 
         return arrayMove(items, oldIndex, newIndex);
       });
     }
+
+    setActiveId(null);
+    setActiveDragItemData(null);
+  }
+
+  function handleDragStart(event) {
+    setActiveId(event.active.id);
+    setActiveDragItemData(event?.active?.data?.current);
+  }
+
+  const customDropAnimation = {
+    sideEffects: defaultDropAnimationSideEffects({ styles: { active: { opacity: "0.5" } } }) 
   }
 
   return (
@@ -82,23 +101,21 @@ const Admin = () => {
 
       <DndContext
         sensors={sensors}
-        // collisionDetection={closestCenter}
+        onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
         <SortableContext
-          items={items.filter((item) => item.id)}
-          strategy={rectSwappingStrategy}
+          items={items.map((item) => item.id)}
+          strategy={verticalListSortingStrategy}
         >
-          {items.map((item, idx) => (
-            <LinkItem
-              key={idx}
-              name={item.name}
-              title={item.title}
-              id={item.id}
-              desc={item.desc}
-            />
+          {items.map((item) => (
+            <LinkItem key={item.id} data={item} />
           ))}
         </SortableContext>
+        
+        <DragOverlay dropAnimation={customDropAnimation}>
+          {activeId ? <LinkItem data={activeDragItemData} /> : null}
+        </DragOverlay>
       </DndContext>
     </Fragment>
   );
