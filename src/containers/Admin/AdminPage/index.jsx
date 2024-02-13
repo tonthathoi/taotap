@@ -82,7 +82,7 @@ const Admin = () => {
 
       <DndContext
         sensors={sensors}
-        collisionDetection={closestCenter}
+        // collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
       >
         <SortableContext
